@@ -2,19 +2,24 @@ pipeline {
     agent any
 
     stages {
+        stage('checkout') {
+            steps {
+                checkout scm
+            }
+        }
         stage('init') {
             steps {
-                sh 'terraform init'
+                sh ("terraform init")
             }
         }
         stage('validate'){
           steps{
-            sh 'terraform validate'
+            sh ("terraform validate")
          }
        }
         stage('plan'){
           steps{
-            sh 'terraform plan'
+            sh ("terraform plan")
           }
          }
       
